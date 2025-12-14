@@ -1,0 +1,1993 @@
+:root {
+  --bg: #060608;
+  --bg-alt: #0f0e0d;
+  --card: #151417;
+  --card-alt: #1b1918;
+  --accent: #ffd166;
+  --accent-soft: rgba(255, 209, 102, 0.16);
+  --text: #f7f7f7;
+  --text-muted: #a4a6b3;
+  --text-muted-faint: rgba(164,166,179,0.56);
+  --border-subtle: #2a2b37;
+  --danger: #ff5f57;
+  --warning: #febc2e;
+  --success: #28c840;
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.55);
+  --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --transition-fast: 0.18s ease-out;
+  --transition-med: 0.25s ease-out;
+  --max-width: 540px; /* increased to give the layout a bit more width while staying centered like a phone */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top left, #181824 0, #060608 55%);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro",
+    "Inter", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* Header */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.2rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  background: linear-gradient(
+    to bottom,
+    rgba(6, 6, 8, 0.96),
+    rgba(6, 6, 8, 0.9),
+    rgba(6, 6, 8, 0.85),
+    transparent
+  );
+  backdrop-filter: blur(18px);
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-toggle {
+  display: none;
+  border: 1px solid var(--border-subtle);
+  background: rgba(15, 16, 22, 0.9);
+  color: var(--text);
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  font-size: 1rem;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 1.1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: color var(--transition-fast), border-color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.nav-list a:hover {
+  color: var(--accent);
+  border-color: rgba(200, 255, 77, 0.35);
+  background: rgba(12, 14, 20, 0.9);
+}
+
+/* Hero */
+
+.hero {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem 1rem 0.8rem;
+  display: grid;
+  /* use a single-column, stacked layout so content reads like a centered phone screen */
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+  align-items: start;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  padding: 0.15rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--accent-soft);
+  background: linear-gradient(135deg, rgba(255,215,102,0.06), rgba(0,0,0,0.12));
+  width: fit-content;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  line-height: 1.1;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+/* Premium tag next to hero title */
+.premium-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #ffd166, #ffb347);
+  color: #111;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(255, 181, 71, 0.12);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Adjusted premium tag: smaller and positioned close to 'Profesional' */
+.premium-tag {
+  font-size: 0.62rem; /* smaller */
+  padding: 0.18rem 0.42rem; /* tighter padding */
+  margin-left: 0.38rem; /* closer to the word */
+  transform: translateY(-6px); /* nudge upward so it sits to the top-right of 'Profesional' */
+  box-shadow: 0 8px 18px rgba(255, 181, 71, 0.10);
+  letter-spacing: 0.06em;
+}
+
+.hero-subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-muted-faint);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.06rem;
+}
+
+/* Modern 3D buttons: base layer, gloss top, subtle inner rim and press effect */
+.btn {
+  --depth-shadow: 0 18px 36px rgba(2,6,10,0.55);
+  --depth-shadow-press: 0 6px 12px rgba(2,6,10,0.45);
+  --rim: rgba(255,255,255,0.03);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.68rem 1.3rem;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms cubic-bezier(.2,.9,.3,1), opacity 160ms linear;
+  will-change: transform, box-shadow;
+  /* layered look using inner shadow via background-image and box-shadow */
+  background-origin: border-box;
+  box-shadow: var(--depth-shadow);
+}
+
+/* subtle glossy overlay via pseudo-element */
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  mix-blend-mode: overlay;
+  opacity: 0.9;
+  transition: opacity 180ms ease;
+}
+
+/* pressed state */
+.btn:active,
+.btn--pressed {
+  transform: translateY(2px);
+  box-shadow: var(--depth-shadow-press);
+  opacity: 0.98;
+}
+
+/* Ensure programmatic active state (mc-active) wins over native :active to avoid conflicting transforms when holding */
+.btn.mc-active {
+  transform: translateY(6px) !important;
+  box-shadow: var(--depth-shadow-press) !important;
+  opacity: 0.98 !important;
+}
+
+/* Primary (gold) 3D button */
+.btn-primary {
+  background: linear-gradient(180deg, #ffd966 0%, #ffb347 50%, #f6a623 100%);
+  color: #111;
+  padding: 0.7rem 1.4rem;
+  border-radius: 16px;
+  box-shadow: 0 22px 46px rgba(245,170,60,0.20), inset 0 -6px 14px rgba(0,0,0,0.08);
+  transform: translateZ(0);
+}
+
+/* hover lifts slightly and increases highlight */
+.btn-primary:hover {
+  /* remove lift; keep a subtle shadow glow without translate */
+  box-shadow: 0 28px 56px rgba(245,170,60,0.20);
+  transform: none;
+}
+
+/* Outline / ghost button with 3D rim */
+.btn-outline {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.04);
+  padding: 0.6rem 1.2rem;
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+/* hover for outline: gentle lift + rim accent */
+.btn-outline:hover {
+  /* no vertical lift, only rim accent and subtle shadow */
+  border-color: rgba(255,209,102,0.18);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.38);
+  transform: none;
+}
+
+/* WhatsApp-styled 3D button */
+.btn-whatsapp {
+  --wh-green: #25D366;
+  --wh-green-dark: #128C7E;
+  color: #fff;
+  padding-left: 1.05rem;
+  padding-right: 1.3rem;
+  border-radius: 16px;
+  background: linear-gradient(180deg, var(--wh-green) 0%, #22c76a 40%, var(--wh-green-dark) 100%);
+  box-shadow: 0 20px 44px rgba(18,140,126,0.18), inset 0 -6px 12px rgba(0,0,0,0.12);
+  display: inline-flex;
+  align-items: center;
+
+  /* new: subtle pulsing glow */
+  animation: wh-glow 3s ease-in-out infinite;
+  transition: box-shadow 220ms ease, transform 220ms ease;
+}
+
+/* WhatsApp icon area: improved visual, fixed square with subtle background rim */
+.btn-whatsapp::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  margin-right: 0.7rem;
+  border-radius: 8px;
+  background-color: rgba(255,255,255,0.06);
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg");
+  background-size: 62%;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: inset 0 -2px 6px rgba(0,0,0,0.18);
+}
+
+/* hover/focus effects for WhatsApp */
+.btn-whatsapp:hover,
+.btn-whatsapp:focus {
+  /* remove lift on hover; keep stronger glow only */
+  box-shadow: 0 28px 56px rgba(18,140,126,0.20);
+  transform: none;
+}
+
+/* Combination nuance to avoid too-strong double shadows */
+.btn-primary.btn-whatsapp {
+  box-shadow: 0 20px 52px rgba(18,140,126,0.20);
+}
+
+/* Accessible focus ring */
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255,209,102,0.08), var(--depth-shadow);
+}
+
+/* Full-width behavior on small screens (keeps new shape) */
+@media (max-width: 480px) {
+  .btn {
+    width: 100%;
+    justify-content: center;
+    border-radius: 12px;
+    padding: 0.7rem 1rem;
+  }
+  .btn-whatsapp::before {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 0.4rem;
+}
+
+.hero-meta span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  padding: 0.3rem 0.7rem;
+  background: rgba(18, 19, 28, 0.95);
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+}
+
+/* Hero visual */
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.hero-card {
+  width: 100%;
+  /* remove tiny fixed cap so the card can expand naturally */
+  max-width: 100%;
+  background: radial-gradient(circle at top left, #232535, #151723);
+  border-radius: 20px;
+  border: 1px solid rgba(200, 255, 77, 0.15);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+/* Desktop: make the mac card much wider and remove side gaps by using more of the layout width.
+   Keep it constrained so it doesn't exceed a comfortable reading width on very large monitors. */
+@media (min-width: 900px) {
+  .hero-card {
+    /* use most of the container, eliminating big empty gutters around the card */
+    width: min(920px, calc(100% - 28px));
+    max-width: min(920px, calc(100% - 28px));
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.hero-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(10, 10, 14, 0.9);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.red {
+  background: var(--danger);
+}
+.yellow {
+  background: var(--warning);
+}
+.green {
+  background: var(--success);
+}
+
+.hero-card-body {
+  padding: 0.9rem 0.9rem 1.1rem;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.timeline-item {
+  padding: 0.6rem 0.6rem 0.55rem;
+  border-radius: 12px;
+  background: rgba(16, 17, 26, 0.95);
+  border: 1px solid rgba(200, 255, 77, 0.14);
+}
+
+.timeline-item p {
+  margin: 0.25rem 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.badge {
+  display: inline-flex;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 0.18rem 0.6rem;
+  border: 1px solid rgba(200, 255, 77, 0.4);
+  background: rgba(10, 10, 14, 0.9);
+}
+
+.badge-alt {
+  color: #fff;
+  background: rgba(200, 255, 77, 0.18);
+  border-color: rgba(200, 255, 77, 0.45);
+}
+
+.hero-float {
+  position: static;
+  margin-top: 0.8rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 16px;
+  background: rgba(6, 6, 8, 0.96);
+  border: 1px solid rgba(200, 255, 77, 0.24);
+  box-shadow: var(--shadow-subtle);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  align-self: flex-start; /* keep it visually attached to the card's lower-left */
+}
+
+/* Sections */
+
+.section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem 1rem 1.2rem;
+}
+
+.section-alt {
+  background: radial-gradient(circle at bottom right, #10101a 0, #060608 55%);
+  border-radius: 28px;
+  border: 1px solid rgba(200, 255, 77, 0.09);
+  box-shadow: var(--shadow-soft);
+  margin-top: 0.4rem;
+}
+
+/* If two section-alt blocks sit consecutively, collapse the gap and remove the
+   top border on the following one so there is only a single visual divider. */
+.section-alt + .section-alt {
+  margin-top: 0;
+  border-top: none;
+  border-radius: 28px 28px 28px 28px; /* keep rounded corners consistent */
+}
+
+.section-header {
+  max-width: 700px;
+  margin-bottom: 0.8rem;
+}
+
+.section-header h2 {
+  margin: 0 0 0.45rem;
+  font-size: 1.45rem;
+}
+
+.section-header p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Services (reworked for carousel) */
+
+.service-card {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: 0.6rem 0.75rem; /* slightly adjusted padding to save vertical space */
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-subtle);
+  min-width: 160px; /* narrower cards */
+  box-sizing: border-box;
+  font-size: 0.94rem; /* slightly smaller base text */
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  /* ensure text block can wrap and not push card taller */
+  align-content: center;
+  /* keep consistent height so long titles don't increase card height */
+  min-height: 72px;
+}
+
+/* Icon shown before each niche title */
+.service-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px; /* reduced icon size */
+  height: 24px;
+  font-size: 0.9rem;
+  margin-right: 0.5rem; /* reduced spacing so icon sits tight to text */
+  /* remove bottom margin so icon doesn't increase card height */
+  margin-bottom: 0;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.02);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.40);
+  flex: 0 0 auto;
+  flex-shrink: 0; /* never shrink the icon */
+  /* make icon glyphs use accent (yellow) color */
+  color: var(--accent);
+  /* subtle tinted background that pairs with the yellow icon */
+  background: linear-gradient(180deg, rgba(255,209,102,0.06), rgba(0,0,0,0.02));
+  border-color: rgba(255,209,102,0.08);
+}
+
+/* Ensure the text column uses remaining space and keeps single-line title */
+.service-card h3 {
+  margin: 0 0 0.15rem 0;
+  font-size: 1.05rem;
+  line-height: 1.05;
+  flex: 1 1 auto;            /* allow title to take remaining space */
+  min-width: 0;              /* allow truncation with ellipsis */
+  white-space: nowrap;       /* keep title on one line */
+  overflow: hidden;
+  text-overflow: ellipsis;   /* truncate if too long to fit the rect */
+}
+
+.service-desc {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.25;
+  flex: 0 0 auto; /* keep description compact and not push height */
+  opacity: 0.95;
+  margin-top: 0.1rem;
+}
+
+/* Carousel wrapper */
+.services-carousel {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  position: relative;
+  padding: 0; /* removed extra padding so viewport can expand */
+  overflow: visible; /* allow nav buttons to visually escape the card edges */
+}
+
+/* viewport masks overflow and sets visible area */
+.carousel-viewport {
+  overflow: hidden;
+  flex: 1 1 auto;
+  border-radius: 14px;
+  padding: 0 6px; /* small inset so content doesn't touch button edges */
+}
+
+/* track is a horizontal flex row that slides */
+.carousel-track {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.4rem;
+  transition: transform 420ms cubic-bezier(.2,.9,.3,1);
+  will-change: transform;
+}
+
+/* each slide keeps consistent sizing */
+.carousel-slide {
+  flex: 0 0 130px; /* compact slide width */
+  max-width: 130px;
+}
+
+/* Carousel buttons */
+.carousel-btn {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.03);
+  color: var(--text);
+  font-size: 1.6rem;
+  line-height: 1;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+  transition: transform 180ms ease, background 180ms ease;
+  position: absolute; /* pin buttons so they sit at the carousel edges */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 12; /* raise above card so buttons float visually */
+  background-clip: padding-box;
+}
+
+/* place prev/next flush against the carousel edges */
+.carousel-prev {
+  left: -28px; /* moved further outside the card so buttons clear the mac frame */
+}
+
+.carousel-next {
+  right: -28px; /* moved further outside the card so buttons clear the mac frame */
+}
+
+.carousel-btn:hover {
+  /* avoid vertical lift for consistency with button behavior */
+  background: rgba(255,209,102,0.04);
+  color: var(--accent);
+  transform: translateY(-50%); /* keep vertical centering when hovered */
+}
+
+/* dot indicators */
+.carousel-dots {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -0.9rem;
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-dots button {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255,255,255,0.06);
+  cursor: pointer;
+  padding: 0;
+}
+
+.carousel-dots button[aria-selected="true"] {
+  background: var(--accent);
+  width: 18px;
+  border-radius: 999px;
+  transition: width 220ms ease;
+}
+
+/* Responsive: smaller slides and stacked controls on mobile */
+@media (max-width: 800px) {
+  .carousel-slide {
+    flex: 0 0 150px;
+    max-width: 150px;
+  }
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-carousel {
+    gap: 0.5rem;
+  }
+  .carousel-slide {
+    flex: 0 0 140px;
+    max-width: 140px;
+  }
+  .carousel-dots {
+    bottom: -1.1rem;
+  }
+}
+
+/* Gallery */
+
+.gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.1rem;
+}
+
+.filter-btn {
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  padding: 0.35rem 0.9rem;
+  background: rgba(16, 17, 26, 0.95);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background-color var(--transition-fast),
+    border-color var(--transition-fast), color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.filter-btn.active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.6rem;
+}
+
+.thumb {
+  position: relative;
+  background: linear-gradient(135deg, #242635, #171821);
+  border-radius: 14px;
+  border: 1px solid rgba(200, 255, 77, 0.16);
+  padding: 0.6rem 0.7rem;
+  min-height: 130px;
+  box-shadow: var(--shadow-subtle);
+  overflow: hidden;
+}
+
+.thumb-vertical {
+  aspect-ratio: 9 / 16;
+}
+
+.thumb-tag {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.5rem;
+  font-size: 0.7rem;
+  padding: 0.16rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(6, 6, 8, 0.9);
+  border: 1px solid rgba(200, 255, 77, 0.45);
+  color: var(--accent);
+}
+
+/* Make thumbnails show only the main title centered, hide the subtitle,
+   and keep the niche tag at the top (e.g., "Gaming") */
+.thumb-body {
+  /* center content both vertically and horizontally for a poster-like look */
+  position: absolute;
+  inset: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none; /* keep clicks on whole thumb */
+}
+
+/* larger, bold title that's the only visible text over the thumbnail */
+.thumb-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.05;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+  pointer-events: none;
+}
+
+/* hide the subtitle to keep the visual minimal (only title visible) */
+.thumb-sub {
+  display: none;
+}
+  
+/* NEW: make horizontal thumbs' titles much smaller, minimal and anchored at bottom, centered */
+.thumb:not(.thumb-vertical) .thumb-body {
+  align-items: flex-end;           /* place content at the bottom */
+  justify-content: center;         /* center horizontally */
+  /* reduce bottom spacing so titles sit almost at the card edge */
+  padding-bottom: 0.18rem;
+  /* tighten top/side insets but keep tiny bottom inset to let text sit very low */
+  inset: 0.5rem 0.6rem 0.18rem 0.6rem;
+}
+
+.thumb:not(.thumb-vertical) .thumb-title {
+  font-size: 0.58rem;              /* aún más pequeño para un look ultra-minimal */
+  font-weight: 600;
+  color: var(--text-muted);        /* reduced contrast */
+  text-shadow: none;
+  transform: translateY(0);
+  line-height: 1.05;               /* slightly taller to improve readability across 2 lines */
+  padding: 0 0.25rem;
+  max-width: 100%;
+  display: -webkit-box;            /* clamp to 2 lines */
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  /* nudge visually a touch further downward on very short thumbnail heights */
+  margin-bottom: 0.06rem;
+}
+
+/* Make vertical thumbs match horizontals: small, minimal titles anchored at the bottom */
+.thumb.thumb-vertical .thumb-body {
+  /* place content at the bottom like horizontals so titles appear low and consistent */
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 0.6rem;
+  inset: 0.6rem;
+  text-align: center;
+}
+
+/* vertical-thumb title: smaller, muted, centered and limited to two lines */
+.thumb.thumb-vertical .thumb-title {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-shadow: none;
+  transform: translateY(0);
+  line-height: 1.05;
+  padding: 0 0.25rem;
+  max-width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+
+/* Stats */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.stat-card {
+  background: var(--card);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-subtle);
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Testimonials */
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+}
+
+/* Message-style testimonial cards */
+.testimonial-card.message {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 14px;
+  padding: 0.6rem;
+  border: 1px solid rgba(255,209,102,0.08);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Header row with avatar, name and rating */
+.msg-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.1rem 0.2rem;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid rgba(255,209,102,0.12);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+
+/* sender block */
+.sender {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.testimonial-name {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.95rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.testimonial-role {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* rating style */
+.rating {
+  margin-left: auto;
+  color: #ffd166;
+  font-weight: 700;
+  font-size: 0.95rem;
+  -webkit-text-stroke: 0.2px rgba(0,0,0,0.25);
+}
+
+/* message bubble */
+.msg-body {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 10px;
+  padding: 0.7rem;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  border: 1px solid rgba(255,209,102,0.06);
+  box-shadow: inset 0 -4px 18px rgba(0,0,0,0.25);
+  line-height: 1.3;
+}
+
+/* Slight variation for compact layouts */
+@media (max-width: 480px) {
+  .avatar {
+    width: 40px;
+    height: 40px;
+  }
+  .rating {
+    font-size: 0.9rem;
+  }
+  .msg-body {
+    font-size: 0.84rem;
+  }
+}
+
+/* Accordion */
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* Base item */
+.accordion-item {
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.03);
+  background: linear-gradient(180deg, rgba(18,19,26,0.9), rgba(12,13,18,0.85));
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(2,4,8,0.55);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+/* Slight lift on hover for affordance */
+.accordion-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(2,4,8,0.65);
+}
+
+/* Compact header with left-aligned text and a pinned chevron to the right */
+.accordion-header {
+  width: 100%;
+  padding: 0.5rem 0.8rem;
+  background: transparent;
+  color: var(--text);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 0.95rem;
+  cursor: pointer;
+  position: relative;
+  gap: 0.45rem;
+  line-height: 1.08;
+}
+
+/* header main text */
+.accordion-header span {
+  display: block;
+  flex: 1 1 auto;
+  text-align: left;
+  margin-right: 1.6rem;
+  white-space: normal;
+  overflow: hidden;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* modern chevron using pseudo-element for crispness and accessibility */
+.accordion-icon {
+  position: absolute;
+  right: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  transition: transform var(--transition-med), color var(--transition-med);
+  color: var(--text-muted);
+  -webkit-mask-image: none;
+  font-weight: 700;
+}
+
+/* Use a simple chevron glyph (rotate on open) */
+.accordion-icon::before {
+  content: "❯";
+  display: inline-block;
+  transform-origin: center;
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+/* Open state visuals: accent border, background tint and rotated chevron */
+.accordion-item.open {
+  border-left: 4px solid var(--accent);
+  background: linear-gradient(180deg, rgba(255,209,102,0.02), rgba(12,13,18,0.88));
+}
+
+.accordion-item.open .accordion-icon {
+  transform: translateY(-50%) rotate(90deg);
+  color: var(--accent);
+}
+
+/* Body: make it feel like an expandable panel with smoother reveal */
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 0.8rem;
+  transition: max-height 360ms cubic-bezier(.2,.9,.3,1), padding var(--transition-med), opacity 260ms ease, transform 320ms cubic-bezier(.2,.9,.3,1);
+  border-top: 1px solid rgba(255,255,255,0.02);
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+  opacity: 0;
+  transform: translateY(-6px);
+  will-change: transform, opacity, max-height;
+}
+
+.accordion-body p,
+.accordion-body ol {
+  font-size: 0.9rem; /* compact but readable */
+  color: var(--text-muted);
+  margin: 0.5rem 0 0.8rem;
+  line-height: 1.45;
+}
+
+/* ordered lists slightly indented and subtle */
+.accordion-body ol {
+  padding-left: 1.05rem;
+  margin: 0.35rem 0;
+}
+
+/* When opened show tighter inner padding */
+.accordion-item.open .accordion-body {
+  padding: 0.45rem 0.8rem 0.7rem;
+  max-height: 520px; /* large enough for content; JS sets exact height */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  .accordion-header {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.92rem;
+  }
+  .accordion-header span {
+    margin-right: 1.2rem;
+  }
+  .accordion-icon {
+    right: 0.7rem;
+  }
+}
+
+/* Footer */
+
+.site-footer {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+  background: rgba(5, 5, 8, 0.96);
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem 1rem 0.8rem;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.footer-main h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+}
+
+.footer-main p {
+  margin: 0 0 0.9rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.footer-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.footer-small {
+  margin-top: 0.4rem;
+}
+
+/* Responsive */
+
+@media (max-width: 800px) {
+  .site-header {
+    padding-inline: 0.9rem;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .nav-list {
+    position: absolute;
+    top: 3rem;
+    right: 0.8rem;
+    padding: 0.4rem;
+    flex-direction: column;
+    gap: 0.1rem;
+    background: rgba(6, 6, 8, 0.98);
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-subtle);
+    min-width: 150px;
+    transform-origin: top right;
+    transform: scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .nav-list.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+  }
+
+  .nav-list a {
+    display: block;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 1.2rem;
+  }
+
+  .hero-visual {
+    /* column flow already handles stacking; keep small top gap */
+    margin-top: 0.3rem;
+    align-items: flex-start;
+  }
+
+  .hero-card {
+    max-width: 100%;
+  }
+
+  .hero-float {
+    left: 0;
+  }
+
+  .footer-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-inline: 0.9rem;
+  }
+
+  .section {
+    padding-inline: 0.9rem;
+  }
+
+  .section-alt {
+    border-radius: 0;
+  }
+
+  .footer-inner {
+    padding-inline: 0.9rem;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+}
+
+/* Testimonials ticker (news-ticker) */
+.testimonial-ticker {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 0.3rem 0;
+  border-radius: 12px;
+  background: transparent;
+  border: none;
+}
+
+/* Track is a long horizontal flex row that scrolls left */
+.ticker-track {
+  display: flex;
+  gap: 0.6rem;
+  align-items: stretch;
+  width: max-content;
+  animation: ticker-scroll 30s linear infinite;
+  will-change: transform;
+}
+
+/* Each ticker item wraps a testimonial card */
+.ticker-item {
+  flex: 0 0 auto;
+  min-width: 260px; /* consistent width so cards align visually */
+  display: flex;
+  align-items: stretch;
+}
+
+/* Testimonial cards inside ticker: allow natural height so text is not truncated */
+.ticker-item .testimonial-card.message {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.6rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 360px;
+  box-sizing: border-box;
+  /* let content dictate height so full messages are visible */
+  height: auto;
+}
+
+/* Keep header row compact but stable */
+.ticker-item .msg-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0;
+}
+
+/* Slightly reduce avatar size inside ticker */
+.ticker-item .avatar {
+  width: 40px;
+  height: 40px;
+}
+
+/* Make rating smaller inside ticker */
+.ticker-item .rating {
+  font-size: 0.9rem;
+}
+
+/* Message body now flows naturally (no internal scrolling) so text is shown completely */
+.ticker-item .msg-body {
+  font-size: 0.88rem;
+  padding: 0.45rem 0;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  flex: 0 0 auto;
+  overflow: visible;
+  line-height: 1.35;
+  white-space: normal;
+}
+
+/* Hide native scrollbar but keep scroll functionality (cross-browser simple approach) */
+.ticker-item .msg-body::-webkit-scrollbar {
+  width: 6px;
+}
+.ticker-item .msg-body::-webkit-scrollbar-thumb {
+  background: rgba(255,209,102,0.14);
+  border-radius: 6px;
+}
+
+/* Pause on hover for accessibility */
+.testimonial-ticker:hover .ticker-track,
+.testimonial-ticker:focus-within .ticker-track {
+  animation-play-state: paused;
+}
+
+/* Keyframes: scroll left by half the track (we duplicated items so one full cycle equals half the visual length) */
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive: slower and smaller items on mobile */
+@media (max-width: 480px) {
+  .ticker-track {
+    gap: 0.6rem;
+    animation-duration: 38s;
+  }
+  .ticker-item {
+    min-width: 220px;
+  }
+  .ticker-item .testimonial-card.message {
+    min-height: 84px;
+  }
+}
+
+/* Minecraft-style pixel button press
+   - provides a short stepped ("blocky") press and release animation
+   - triggered by adding the .mc-press class to any .btn element */
+@keyframes mc-press {
+  0% {
+    transform: translateY(0) scaleY(1);
+    box-shadow: var(--depth-shadow);
+  }
+  40% {
+    transform: translateY(6px) scaleY(0.985);
+    box-shadow: var(--depth-shadow-press);
+  }
+  100% {
+    transform: translateY(0) scaleY(1);
+    box-shadow: var(--depth-shadow);
+  }
+}
+
+/* Use steps timing to get a chunky, pixel-like feel */
+.btn.mc-press {
+  animation: mc-press 220ms steps(3, end) both;
+  will-change: transform, box-shadow;
+}
+
+/* Slight immediate visual change while pointer is down for instant feedback */
+.btn.mc-active {
+  transform: translateY(6px);
+  box-shadow: var(--depth-shadow-press);
+}
+
+/* Profile photo in hero */
+.profile-photo {
+  width: 96px;
+  height: 96px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 4px solid rgba(255,209,102,0.12);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.55), 0 2px 0 rgba(255,209,102,0.03) inset;
+  margin-bottom: 0.6rem;
+  align-self: start;
+  transition: transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms ease;
+}
+
+/* subtle hover/press affordance for profile */
+.profile-photo:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 46px rgba(0,0,0,0.6), 0 2px 0 rgba(255,209,102,0.04) inset;
+}
+
+/* New: profile row to show photo + name */
+.profile-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.2rem;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Name next to profile photo */
+.profile-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+}
+
+/* small verified badge next to the name */
+.verified-icon {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin-left: 2px;
+  transform: translateY(-1px);
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.45));
+  border-radius: 4px;
+}
+
+/* subtle responsive size tweaks */
+@media (max-width: 800px) {
+  .profile-photo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0.5rem;
+  }
+  .profile-name {
+    font-size: 0.98rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-photo {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 0.45rem;
+    border-width: 3px;
+  }
+  .profile-name {
+    font-size: 0.95rem;
+  }
+}
+
+/* New small label next to profile name */
+.profile-label {
+  margin-top: 6px;
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(255,209,102,0.08);
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,209,102,0.12);
+  line-height: 1;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.36);
+  /* glow animation */
+  position: relative;
+  animation: glow-edge 2.6s ease-in-out infinite;
+  --glow-color: rgba(255,181,71,0.12);
+}
+
+/* Slight spacing tweak on narrow screens so label doesn't wrap awkwardly */
+@media (max-width: 480px) {
+  .profile-info { margin-left: 6px; }
+  .profile-label { margin-top: 4px; font-size: 0.68rem; padding: 0.14rem 0.5rem; }
+}
+
+/* --- Updated: center icon + text inside niche cards --- */
+.service-card {
+  /* switch to column layout and center content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.28rem;
+  padding: 0.38rem 0.5rem; /* slightly tighter padding for compact look */
+  min-height: 58px; /* lowered to create more compact rectangles */
+}
+
+/* center the icon and make it slightly smaller so emojis sit understated above the title */
+.service-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 0.78rem; /* smaller emoji glyph size */
+  margin-right: 0; /* remove left spacing since icon is above text */
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.36);
+  background: rgba(255,255,255,0.02);
+  /* ensure the yellow accent persists in the compact variant too */
+  color: var(--accent);
+  background: linear-gradient(180deg, rgba(255,209,102,0.06), rgba(0,0,0,0.02));
+  border-color: rgba(255,209,102,0.08);
+}
+
+/* allow the title to wrap and center align it under the icon, using a smaller type */
+.service-card h3 {
+  margin: 0;
+  font-size: 0.82rem; /* reduced name size */
+  line-height: 1.05;
+  white-space: normal;      /* allow wrapping */
+  text-align: center;       /* center text under icon */
+  overflow: visible;
+  text-overflow: unset;
+  max-width: 100%;
+  word-break: break-word;
+  padding: 0 0.18rem;
+}
+/* --- End update --- */
+
+/* Center common titles site-wide except the hero main title */
+.section-header h2,
+.service-card h3,
+.thumb-title,
+.footer-main h2 {
+  text-align: center;
+}
+
+/* Keep FAQ question titles left-aligned for readability */
+.accordion-header span {
+  text-align: left;
+}
+
+/* Ensure hero main title remains left-aligned */
+.hero h1 {
+  text-align: left;
+}
+
+/* Orientation controls layout (small group aligned with gallery filters) */
+.orientation-controls {
+  display: inline-flex;
+  gap: 0.12rem;              /* tightened spacing so buttons sit very close */
+  margin: 0.6rem auto 0;     /* center the control group horizontally */
+  align-items: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+  padding: 4px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 6px 18px rgba(0,0,0,0.45);
+  position: relative; /* needed for highlight positioning */
+  overflow: visible;
+  justify-content: center;   /* ensure the two buttons are centered inside the pill */
+}
+
+/* Highlight layer that will slide between buttons */
+.orientation-controls::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: var(--hl-left, 4px);
+  width: var(--hl-width, 88px);
+  height: calc(100% - 6px);
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,209,102,0.12) 45%, rgba(255,255,255,0.06));
+  box-shadow: 0 8px 20px rgba(255,181,71,0.06), inset 0 1px 0 rgba(255,255,255,0.02);
+  transform: translateZ(0);
+  transition: left 420ms cubic-bezier(.2,.9,.3,1), width 420ms cubic-bezier(.2,.9,.3,1), opacity 260ms ease;
+  pointer-events: none;
+  opacity: 0; /* starts hidden until JS positions it */
+}
+
+/* subtle sweeping sheen animation when highlight moves */
+.orientation-controls.hl-animate::before {
+  animation: highlight-sheen 700ms ease;
+  opacity: 1;
+}
+
+@keyframes highlight-sheen {
+  0% {
+    background-position: -150% 0%;
+  }
+  60% {
+    background-position: 120% 0%;
+  }
+  100% {
+    background-position: 120% 0%;
+  }
+}
+
+/* larger, more readable orientation buttons */
+.orient-btn {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.98rem;
+  border-radius: 10px;
+  min-width: 86px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), box-shadow 160ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* segmented look: first and last get rounded corners to create a pill */
+.orientation-controls .orient-btn:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.orientation-controls .orient-btn:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* use inline SVG icons before each label */
+.orient-btn svg {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  margin-right: 0.45rem;
+  flex: 0 0 auto;
+  fill: currentColor; /* inherit color from the button (so active state colors the icon) */
+  opacity: 0.95;
+  vertical-align: middle;
+}
+
+/* keep the visible label styling consistent */
+.orient-btn .label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ensure spacing and sizing on small screens for the inline icon+label */
+@media (max-width: 480px) {
+  .orient-btn svg {
+    width: 14px;
+    height: 14px;
+    margin-right: 0.4rem;
+  }
+}
+
+/* keep active state visually stronger for larger buttons */
+.filter-btn.active.orient-btn {
+  /* keep the active state subtle so the moving highlight (::before) is the main visual */
+  background: transparent;
+  border-color: rgba(255,209,102,0.14);
+  color: var(--accent);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: none;
+}
+
+/* subtle hover for each segment when not active */
+.orientation-controls .orient-btn:not(.active):hover {
+  background: rgba(255,255,255,0.02);
+  transform: translateY(-1px);
+}
+
+/* On very small screens stack orientation controls below filters */
+@media (max-width: 480px) {
+  .orientation-controls {
+    width: 100%;
+    margin-left: 0;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.45rem;
+    padding: 3px;
+  }
+  .orient-btn {
+    min-width: 46%;
+    padding: 0.5rem 0.5rem;
+  }
+}
+
+/* Make gallery section description lower contrast (more subtle) */
+#galeria .section-header p {
+  color: rgba(164,166,179,0.56); /* softer, semi-transparent muted gray */
+}
+
+/* Title above hero card (large, white, section-like) */
+.hero-subsection-title {
+  margin: 0 0 0.6rem;
+  font-size: 1.45rem; /* match section h2 scale */
+  color: #ffffff;
+  font-weight: 700;
+  text-align: right; /* align to the hero-card on the right column */
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+/* Slight responsive tweak so it aligns nicely on narrow screens */
+@media (max-width: 800px) {
+  .hero-subsection-title {
+    text-align: left;
+    font-size: 1.25rem;
+    margin-bottom: 0.4rem;
+  }
+}
+
+/* NEW: glow animation for premium-tag and profile-label */
+.premium-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #ffd166, #ffb347);
+  color: #111;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(255, 181, 71, 0.08);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  /* adjusted sizing kept from earlier */
+  font-size: 0.62rem;
+  padding: 0.18rem 0.42rem;
+  margin-left: 0.38rem;
+  transform: translateY(-6px);
+  box-shadow: 0 6px 12px rgba(255, 181, 71, 0.06);
+  letter-spacing: 0.06em;
+  /* glow animation */
+  position: relative;
+  animation: glow-edge 2.6s ease-in-out infinite;
+  --glow-color: rgba(255,181,71,0.12);
+}
+
+/* Keyframes for a soft edge-glow that pulses and sweeps */
+@keyframes glow-edge {
+  0% {
+    box-shadow:
+      0 6px 12px rgba(0,0,0,0.06),
+      0 0 0 0 rgba(255,209,102,0);
+    border-color: rgba(255,209,102,0.04);
+  }
+  40% {
+    box-shadow:
+      0 8px 18px rgba(0,0,0,0.08),
+      0 0 10px 2px var(--glow-color);
+    border-color: rgba(255,209,102,0.14);
+  }
+  70% {
+    box-shadow:
+      0 7px 14px rgba(0,0,0,0.07),
+      0 0 6px 1px rgba(255,209,102,0.08);
+    border-color: rgba(255,209,102,0.08);
+  }
+  100% {
+    box-shadow:
+      0 6px 12px rgba(0,0,0,0.06),
+      0 0 0 0 rgba(255,209,102,0);
+    border-color: rgba(255,209,102,0.04);
+  }
+}
+
+/* ensure reduced motion users don't get continuous animation */
+@media (prefers-reduced-motion: reduce) {
+  .premium-tag,
+  .profile-label {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Collapsed FAQ: hidden but can be revealed by JS (keeps DOM for accessibility) */
+.section.collapsed {
+  display: none;
+}
+
+/* Remove animations and transitions from all buttons to ensure no animated effects */
+.btn,
+.btn * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Toggle button tweaks to visually align with section and be touch-friendly */
+.faq-toggle-wrap { display: block; }
+#faqsToggle { min-width: 220px; }
+
+/* new: keyframes for whatsapp glow */
+@keyframes wh-glow {
+  0% {
+    box-shadow: 0 18px 40px rgba(18,140,126,0.14), inset 0 -6px 12px rgba(0,0,0,0.12);
+  }
+  45% {
+    box-shadow: 0 26px 58px rgba(18,140,126,0.24), 0 0 18px rgba(34,199,106,0.12), inset 0 -6px 12px rgba(0,0,0,0.12);
+  }
+  100% {
+    box-shadow: 0 20px 44px rgba(18,140,126,0.18), inset 0 -6px 12px rgba(0,0,0,0.12);
+  }
+}
+
+/* respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .premium-tag,
+  .profile-label,
+  .btn-whatsapp {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Overlay player for YouTube preview */
+.yt-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2,4,6,0.74);
+  z-index: 120;
+  padding: 1.2rem;
+}
+
+.yt-overlay.active {
+  display: flex;
+}
+
+.yt-player {
+  width: min(1200px, 96%);
+  max-width: 1100px;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+  position: relative;
+}
+
+/* When a vertical thumb opens the overlay, swap to a tall player (9:16).
+   Keep responsive rules so on small screens vertical player fills available width. */
+.yt-player.vertical {
+  aspect-ratio: 9/16;
+  /* constrain max-height for desktop so it doesn't exceed viewport */
+  max-height: calc(96vh - 56px);
+  width: min(420px, 44%); /* narrow tall column on wide screens */
+}
+
+/* On small screens prefer full-width vertical player */
+@media (max-width: 900px) {
+  .yt-player.vertical {
+    width: min(96%, 480px);
+    aspect-ratio: 9/16;
+  }
+}
+
+.yt-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 4;
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.6);
+}
+
+/* make the thumbnail visually indicate play */
+.thumb[data-youtube-id] {
+  cursor: pointer;
+  position: relative;
+}
+
+.thumb[data-youtube-id]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.25));
+  pointer-events: none;
+}
+
+/* Play icon */
+.thumb[data-youtube-id]::after{
+  content: "▶";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 2.2rem;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  pointer-events: none;
+  opacity: 0.98;
+}
+
+/* ensure the title remains visible over thumbnail */
+.thumb[data-youtube-id] .thumb-title {
+  color: #fff;
+  text-shadow: 0 10px 24px rgba(0,0,0,0.7);
+}
+
+/* smaller on mobile */
+@media (max-width: 480px) {
+  .yt-player { width: 100%; aspect-ratio: 16/9; border-radius: 8px; }
+  .yt-close { width: 40px; height: 40px; font-size: 0.95rem; }
+}
+
+/* Desktop: center specific blocks (FAQ toggle, FAQs header, footer contact) */
+@media (min-width: 900px) {
+  /* center the "Mostrar preguntas frecuentes" toggle area */
+  .faq-toggle-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.8rem auto 0;
+  }
+  .faq-toggle-wrap #faqsToggle {
+    min-width: 420px;
+    text-align: center;
+  }
+
+  /* center the FAQs section header content */
+  #faqs .section-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  /* center footer contact block content and make WhatsApp button centered under text */
+  .footer-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .footer-main {
+    text-align: center;
+    max-width: 780px;
+  }
+  .footer-main h2,
+  .footer-main p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Keep the footer heading on a single line on wide screens */
+  .footer-main h2 {
+    white-space: nowrap;
+  }
+  .footer-main .btn-whatsapp {
+    margin: 0.6rem auto 0;
+    display: inline-flex;
+    justify-content: center;
+  }
+}
