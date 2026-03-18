@@ -12,20 +12,23 @@
     name="keywords"
     content="editor sin cara, edición con IA, editor de videos, YouTube, TikTok, Reels, Shorts, edición vertical, UGC, gaming, podcasts, vlogs"
   />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=2" />
 </head>
 <body>
 
 
   <!-- HERO -->
-  <section id="hero" class="hero">
+  <section id="hero" class="hero" data-animate>
+    <!-- Animated particles background -->
+    <div class="hero-particles" aria-hidden="true"></div>
     <div class="hero-content">
       <div class="profile-row">
-        <img class="profile-photo" src="/IMG_0375.jpeg" alt="Foto de Alejandro G. Smith" />
+        <img class="profile-photo" src="CodexAgent.jpeg" alt="Foto de Codex Agent" />
         <div class="profile-info">
-          <div class="profile-name">
-            Alejandro G. Smith
-            <svg class="verified-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+          <div class="profile-name">Codex Agent<svg class="verified-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
               <defs>
                 <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
                   <stop offset="0" stop-color="#ffd166"/>
@@ -47,7 +50,7 @@
         Transformo material bruto o creo videos desde 0 sin mostrar la cara, aplicando IA y voces sintéticas (Eleven Labs) con acabado premium para YouTube, TikTok y Reels.
       </p>
       <div class="hero-actions">
-        <a href="https://wa.me/584126660925?text=👋%20Hola%2C%20estoy%20interesad%40%20en%20tus%20servicios%20de%20edici%C3%B3n%20de%20video..." class="btn btn-primary btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">Contactar por WhatsApp</a>
+        <a href="https://wa.me/584226665814?text=👋%20Hola%2C%20estoy%20interesad%40%20en%20tus%20servicios%20de%20edici%C3%B3n%20de%20video..." class="btn btn-primary btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">Contactar por WhatsApp</a>
         <a href="#galeria" class="btn btn-outline">Ver trabajos</a>
       </div>
     </div>
@@ -57,7 +60,7 @@
   </section>
 
   <!-- Nichos que domino: sección separada (reubicación del hero-card) -->
-  <section id="nichos" class="section section-alt" aria-label="Nichos que domino">
+  <section id="nichos" class="section section-alt" aria-label="Nichos que domino" data-animate>
     <header class="section-header" style="text-align:center;">
       <h2>Nichos que domino</h2>
     </header>
@@ -211,7 +214,7 @@
   <!-- services section removed to avoid duplication with the hero "Nichos que domino" card -->
 
   <!-- GALERÍA DE TRABAJOS -->
-  <section id="galeria" class="section section-alt">
+  <section id="galeria" class="section section-alt" data-animate>
     <header class="section-header">
       <h2>Galería de Trabajos</h2>
       <p>
@@ -441,8 +444,59 @@
 
 
 
+  <!-- AI YOUTUBE AUTOMATION -->
+  <section id="ai-automation" class="section ai-section" data-animate>
+    <div class="ai-glow-orb ai-glow-orb-1" aria-hidden="true"></div>
+    <div class="ai-glow-orb ai-glow-orb-2" aria-hidden="true"></div>
+    <header class="section-header ai-header">
+      <div class="ai-badge">🤖 NUEVO SERVICIO</div>
+      <h2 class="ai-title">Automatización de Canales<br><span class="gradient-text">YouTube con IA</span></h2>
+      <p class="ai-subtitle">Creamos canales 100% automatizados con las herramientas de inteligencia artificial más avanzadas del momento. Sin necesidad de mostrar tu cara.</p>
+    </header>
+
+    <div class="ai-features-grid">
+      <article class="ai-feature-card" data-animate>
+        <div class="ai-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Guiones con IA</h3>
+        <p>Generamos guiones optimizados para retención usando GPT-4, Claude y modelos avanzados.</p>
+      </article>
+
+      <article class="ai-feature-card" data-animate>
+        <div class="ai-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 15V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M5 10a7 7 0 0014 0" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M4 20h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Voces Sintéticas</h3>
+        <p>Narraciones ultra-realistas con ElevenLabs, clonación de voz y múltiples idiomas.</p>
+      </article>
+
+      <article class="ai-feature-card" data-animate>
+        <div class="ai-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="8.5" cy="8.5" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M21 15l-5-5L5 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Thumbnails con IA</h3>
+        <p>Miniaturas llamativas generadas con Midjourney, DALL-E y diseñadas para alto CTR.</p>
+      </article>
+
+      <article class="ai-feature-card" data-animate>
+        <div class="ai-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </div>
+        <h3>Producción en Masa</h3>
+        <p>Flujos de trabajo automatizados para publicar contenido consistente cada semana, sin parar.</p>
+      </article>
+    </div>
+
+    <div class="ai-cta-wrap">
+      <a href="https://wa.me/584226665814?text=👋%20Hola%2C%20quiero%20automatizar%20un%20canal%20de%20YouTube%20con%20IA..." class="btn btn-primary btn-whatsapp btn-ai-cta" target="_blank" rel="noopener noreferrer" aria-label="Automatizar mi canal con IA">
+        Quiero automatizar mi canal
+      </a>
+    </div>
+  </section>
+
   <!-- TESTIMONIOS -->
-  <section id="testimonios" class="section section-alt">
+  <section id="testimonios" class="section section-alt" data-animate>
     <header class="section-header">
       <h2>Testimonios</h2>
     </header>
@@ -777,7 +831,7 @@
           contenido viral, hablemos.
         </p>
         <a
-          href="https://wa.me/584126660925?text=👋%20Hola%2C%20estoy%20interesad%40%20en%20tus%20servicios%20de%20edici%C3%B3n%20de%20video..."
+          href="https://wa.me/584226665814?text=👋%20Hola%2C%20estoy%20interesad%40%20en%20tus%20servicios%20de%20edici%C3%B3n%20de%20video..."
           class="btn btn-primary btn-whatsapp"
           target="_blank"
           rel="noopener noreferrer"
@@ -792,7 +846,7 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=2"></script>
 </body>
 </html>
 

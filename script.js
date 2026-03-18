@@ -548,3 +548,56 @@ if (ticker) {
   });
 })();
 
+/* =============================================================
+   Scroll-triggered entrance animations (IntersectionObserver)
+   ============================================================= */
+(function () {
+  const els = document.querySelectorAll('[data-animate]');
+  if (!els.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target); // only animate once
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  els.forEach((el) => observer.observe(el));
+})();
+
+/* =============================================================
+   Hero floating particles
+   ============================================================= */
+(function () {
+  const container = document.querySelector('.hero-particles');
+  if (!container) return;
+
+  const PARTICLE_COUNT = 18;
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 6 + 3; // 3-9px
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.bottom = -(Math.random() * 40) + 'px';
+    p.style.setProperty('--dx', (Math.random() * 80 - 40) + 'px');
+    p.style.animationDuration = (Math.random() * 8 + 6) + 's';
+    p.style.animationDelay = (Math.random() * 10) + 's';
+    // Varied colours: yellow, purple, cyan
+    const colours = [
+      'radial-gradient(circle, rgba(255,209,102,0.35), transparent 70%)',
+      'radial-gradient(circle, rgba(199,113,237,0.3), transparent 70%)',
+      'radial-gradient(circle, rgba(18,255,247,0.25), transparent 70%)',
+    ];
+    p.style.background = colours[i % colours.length];
+    container.appendChild(p);
+  }
+})();
+

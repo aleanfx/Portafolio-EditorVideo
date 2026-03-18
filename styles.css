@@ -34,8 +34,8 @@ body {
   padding: 0;
   background: radial-gradient(circle at top left, #181824 0, #060608 55%);
   color: var(--text);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro",
-    "Inter", sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "SF Pro",
+    sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -1990,4 +1990,357 @@ body {
     display: inline-flex;
     justify-content: center;
   }
+}
+
+/* ============================================================
+   VISUAL ENHANCEMENTS — Animations, Particles, Glassmorphism
+   ============================================================ */
+
+/* --- Scroll-triggered entrance animations --- */
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-scale {
+  0% { opacity: 0; transform: scale(0.92) translateY(24px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+[data-animate] {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+[data-animate].animate-in {
+  animation: fade-in-up 0.7s cubic-bezier(.16,1,.3,1) forwards;
+}
+
+/* Staggered children inside ai-features-grid */
+.ai-features-grid [data-animate].animate-in:nth-child(1) { animation-delay: 0.08s; }
+.ai-features-grid [data-animate].animate-in:nth-child(2) { animation-delay: 0.18s; }
+.ai-features-grid [data-animate].animate-in:nth-child(3) { animation-delay: 0.28s; }
+.ai-features-grid [data-animate].animate-in:nth-child(4) { animation-delay: 0.38s; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* --- Hero particles --- */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-particles .particle {
+  position: absolute;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255,209,102,0.35), transparent 70%);
+  animation: particle-float linear infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% {
+    transform: translateY(-110vh) translateX(var(--dx, 30px)) scale(0.4);
+    opacity: 0;
+  }
+}
+
+/* Keep hero content above particles */
+.hero > *:not(.hero-particles) {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Glassmorphism enhancement for section-alt cards --- */
+.section-alt {
+  background: rgba(15, 14, 13, 0.55) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,209,102,0.06) !important;
+}
+
+/* --- Gradient text utility --- */
+.gradient-text {
+  background: linear-gradient(135deg, #ffd166 0%, #ff6b6b 40%, #c471ed 70%, #12fff7 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 4s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Enhanced section headings with subtle gradient hover --- */
+.section-header h2 {
+  transition: color 0.3s ease;
+}
+
+/* --- Enhanced card hover micro-interactions --- */
+.service-card,
+.testimonial-card.message {
+  transition: transform 0.28s cubic-bezier(.16,1,.3,1), box-shadow 0.28s ease, border-color 0.28s ease !important;
+}
+
+.service-card:hover {
+  transform: translateY(-4px) scale(1.03) !important;
+  box-shadow: 0 16px 40px rgba(255,209,102,0.08), var(--shadow-soft) !important;
+  border-color: rgba(255,209,102,0.18) !important;
+}
+
+.testimonial-card.message:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 36px rgba(255,209,102,0.06), 0 8px 28px rgba(0,0,0,0.5) !important;
+}
+
+/* --- Profile photo enhanced glow pulse --- */
+@keyframes profile-glow {
+  0%   { box-shadow: 0 12px 40px rgba(0,0,0,0.55), 0 0 0 0 rgba(255,209,102,0); }
+  50%  { box-shadow: 0 12px 40px rgba(0,0,0,0.55), 0 0 20px 4px rgba(255,209,102,0.12); }
+  100% { box-shadow: 0 12px 40px rgba(0,0,0,0.55), 0 0 0 0 rgba(255,209,102,0); }
+}
+
+.profile-photo {
+  animation: profile-glow 3s ease-in-out infinite;
+}
+
+/* ============================================================
+   AI YOUTUBE AUTOMATION SECTION
+   ============================================================ */
+
+.ai-section {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0.8rem auto;
+  padding: 2rem 1.2rem 1.8rem;
+  background: var(--bg-alt) !important;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle) !important;
+  overflow: hidden;
+}
+
+/* Animated floating glow orb */
+.ai-glow-orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0.4;
+  will-change: transform;
+}
+
+.ai-glow-orb-1 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,209,102,0.15), transparent 70%);
+  top: -100px;
+  right: -50px;
+  animation: orb-float-1 8s ease-in-out infinite;
+}
+
+.ai-glow-orb-2 {
+  display: none;
+}
+
+@keyframes orb-float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-20px, 15px) scale(1.05); }
+  66% { transform: translate(15px, -10px) scale(0.95); }
+}
+
+/* AI section header */
+.ai-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.ai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid rgba(255,209,102,0.25);
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.ai-title {
+  font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text);
+  margin: 0 0 0.8rem;
+}
+
+.ai-title .gradient-text {
+  background: linear-gradient(135deg, #ffd166 0%, #ffb347 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: none; /* simple elegant gold text */
+}
+
+.ai-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* AI features grid */
+.ai-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+
+.ai-feature-card {
+  background: var(--card);
+  border-radius: var(--radius-md);
+  padding: 1.4rem 1rem;
+  border: 1px solid var(--border-subtle);
+  transition: transform 0.3s cubic-bezier(.16,1,.3,1), box-shadow 0.3s ease, border-color 0.3s ease;
+  text-align: center;
+}
+
+.ai-feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+  border-color: rgba(255,209,102,0.3);
+}
+
+.ai-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: rgba(255, 209, 102, 0.08); /* soft yellow tint */
+  border: 1px solid rgba(255,209,102,0.15);
+  color: var(--accent);
+  margin-bottom: 1rem;
+  transition: transform 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+
+.ai-feature-card:hover .ai-card-icon {
+  transform: scale(1.08) rotate(-4deg);
+  color: #111;
+  background: var(--accent);
+}
+
+.ai-feature-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.ai-feature-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* AI CTA */
+.ai-cta-wrap {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-ai-cta {
+  font-weight: 700;
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.25);
+}
+
+.btn-ai-cta:hover {
+  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.35) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Responsive for AI section */
+@media (max-width: 480px) {
+  .ai-features-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  .ai-section {
+    padding: 2rem 1rem;
+  }
+  .ai-title {
+    font-size: 1.5rem;
+  }
+
+}
+
+/* === Animated gradient border on hero-card === */
+@keyframes border-rotate {
+  0% { --border-angle: 0deg; }
+  100% { --border-angle: 360deg; }
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.hero-card {
+  border: 1px solid transparent !important;
+  background-image:
+    linear-gradient(var(--card), var(--card)),
+    conic-gradient(from var(--border-angle), rgba(255,209,102,0.3), rgba(199,113,237,0.3), rgba(18,255,247,0.3), rgba(255,209,102,0.3));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: border-rotate 6s linear infinite;
+}
+
+/* === Smooth thumb card entrance on filter switch === */
+.thumb {
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(.16,1,.3,1) !important;
+}
+
+.thumb:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.55);
 }
